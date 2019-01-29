@@ -2,27 +2,65 @@ import React, { Component } from 'react';
 
 //import './App.css';
 import './css/style.css';
-import {form as Element} from './formElement'
+import {inputElement as Element} from './formElement'
 import {button as Button} from './formElement'
+import {dropDownMenu as DropDown} from './formElement'
+// import {checkBox as Checkbox} from './formElement'
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firsName: '',
+      lastName: '', 
+      emailId: '',
+      doj: '',
+      number: '',
+      address: '',
+      department: '',
+      ctc: ''
+    } 
+
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    console.log(event)
+  }
+  handleInputChange = (event) => {
+    console.log(event);
+  }
+  updateStateValue = (event) => {
+    console.log(event);
+    console.log(event.target);
+  }
+
   render() {
+    const response = this.state;
     return (
       <div className="App">
-        <div class="row">
+        <div className="row">
           <h1>EMPLOYEE REGISTRATION</h1>
         </div>
         <section className = "section-form">
-          <form method = "get" action = "#" className = "contact-form">            
-            <Element label = "First name" ph = "First Name" type = "text" input = "input"></Element>
-            <Element label = "Surname" ph = "Last Name" type = "text" input = "input"></Element>
-            <Element label = "Email" ph = " Valid Email ID" type = "email" input = "input"></Element>
-            <Element label = "Date of joining" ph = "Joining Date" type = "date" input = "input"></Element>
-            <Element label = "Mobile Number" ph = "Primary Mobile Number" type = "text" input = "input"></Element>
+          <form onSubmit = {this.handleSubmit} className = "contact-form">  
+
+
+            <Element label = "First name" ph = "First Name" type = "text" meth = {this.handleInputChange}></Element>
+          
+          
+          
+          
+            <Element label = "Surname" ph = "Last Name" type = "text"></Element>
+            <Element label = "Email" ph = " Valid Email ID" type = "email"></Element>
+            <Element label = "Date of joining" ph = "Joining Date" type = "date"></Element>
+            <Element label = "Mobile Number" ph = "Primary Mobile Number" type = "text"></Element>
             <Element label = "Address" ph = "Residential Addres" type = "text" input = "textarea"></Element>
-            <Element label = "Designation" ph = "Current Designation" type = "text" input = "input"></Element>
-            <Element label = "Department" ph = "Assigned Department" type = "text" input = "input"></Element>
-            <Element label = "CTC" ph = "Offered CTC in lacs per annum" type = "number" input = "input"></Element>
-            <Element label = "Status" ph = "Married or Single" type = "text" input = "input"></Element>
+            {/* <Checkbox label = "Status"></Checkbox> */}
+            <DropDown label = "Department" value = {["back-end"]}></DropDown>
+            {/* <Element label = "Department" ph = "Assigned Department" type = "text"></Element> */}
+            <Element label = "CTC" ph = "Offered CTC in lacs per annum" type = "number"></Element>
+
+            {/* <DropDown label = "Designation"></DropDown> */}
             <Button name = "Submit" type = "submit"></Button>
             <Button name = "Reset" type = "reset"></Button>
           </form>

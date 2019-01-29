@@ -65,6 +65,7 @@ h3 {
 h1 {
     margin-top: 0;
     margin-bottom: 20px;
+    margin-left: 25%;
     color: rgb(134, 132, 132);
     font-size: 240%;
     word-spacing: 4px;
@@ -402,8 +403,8 @@ cite img {
 input[type=password],
 input[type=text],
 input[type=email],
-input[type=date]
-input[type=number]
+input[type=date],
+input[type=number],
 select,
 textarea {
     width: 100%;
@@ -411,7 +412,6 @@ textarea {
     border-radius: 3px;
     border: 1px solid #ccc;
 }
-
 textarea {
     height: 100px;
 }

@@ -4,6 +4,8 @@ import './vendors/css/normalize.css'
 import './css/style.css';
 import './css/queries.css';
 import './vendors/css/grid.css'
+import Data from './dataFiles/userData'
+
 class App extends Component {
     constructor (props){
         super (props);
@@ -22,13 +24,23 @@ class App extends Component {
             status: ''
         }
         this.json = {}
+        this.appendData = (jsonFileData) => {
+            let finalData = [jsonFileData]
+        }
     }
+    // JSON Methods ----- START
     loadJSON = () => {
         const jsonFileData = window.localStorage.getItem()
+        this.appendData(jsonFileData)
     }
+
+    // JSON Methods ----- END
+
+    // Input Handling methods ------- START
     handleSubmit = (event) => {
       event.preventDefault();
-      document.write('<p>' + JSON.stringify(this.state) +'</p>');
+      console.log(Data)
+        document.write('<p>' + JSON.stringify(this.state) +'</p>');
     }
     handleInputChange = (event) => {
       event.preventDefault()
@@ -36,6 +48,8 @@ class App extends Component {
       this.setState({
         [event.target.name]: event.target.value
       })
+  // Input Handling methods ------- END
+
   };
   render(){
     return (

@@ -1,4 +1,4 @@
-{
+var Data = {
     "empId": "e1234",
     "firstName": "LAKSHAY",
     "lastName": "DUTT",
@@ -11,3 +11,5 @@
     "ctc": "",
     "status": ""
 }
+
+export default Data

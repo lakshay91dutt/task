@@ -1,69 +1,153 @@
 import React, { Component } from 'react';
-
 //import './App.css';
+import './vendors/css/normalize.css'
 import './css/style.css';
-import {inputElement as Element} from './formElement'
-import {button as Button} from './formElement'
-import {dropDownMenu as DropDown} from './formElement'
-// import {checkBox as Checkbox} from './formElement'
+import './css/queries.css';
+import './vendors/css/grid.css'
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props){
+    super (props);
+
     this.state = {
-      firsName: '',
-      lastName: '', 
+      firstName: '',
+      lastName: '',
       emailId: '',
+      mobile: '',
       doj: '',
-      number: '',
       address: '',
+      designation: '',
       department: '',
-      ctc: ''
-    } 
-
+      ctc: '',
+      status: ''
+    }
+    this.handleSubmit = (event) => {
+      event.preventDefault();
+      document.write('<p>' + JSON.stringify(this.state) +'</p>');
+    }
+    this.handleInputChange = (event) => {
+      event.preventDefault()
+      this.setState({
+        [event.target.name]: event.target.value
+      })
+    }
   };
-
-  handleSubmit = (event) => {
-    event.preventDefault()
-    console.log(event)
-  }
-  handleInputChange = (event) => {
-    console.log(event);
-  }
-  updateStateValue = (event) => {
-    console.log(event);
-    console.log(event.target);
-  }
-
-  render() {
-    const response = this.state;
+  render(){
     return (
-      <div className="App">
-        <div className="row">
-          <h1>EMPLOYEE REGISTRATION</h1>
+      <div className = "App">
+        <div className = "row">
+          <h1>Employee Registration</h1>
         </div>
+
         <section className = "section-form">
-          <form onSubmit = {this.handleSubmit} className = "contact-form">  
+          <form className = "contact-form" onSubmit = {this.handleSubmit} >
+          {/* -------------Name----------------- */}
+            <div className = "row">
+                  <div className = "col span-1-of-3">
+                      <label>First Name</label>
+                  </div>
+                  <div className = "col span-2-of-3">
+                      <input type= "text" name= "firstName" placeholder= "First Name" onChange = {this.handleInputChange}></input>
+                  </div>
+            </div>
+            <br></br>
+            {/* -------------lastName----------------- */}
+            <div className = "row">
+                  <div className = "col span-1-of-3">
+                      <label>Last Name</label>
+                  </div>
+                  <div className = "col span-2-of-3">
+                      <input type= "text" name= "lastName" placeholder= "Last Name" onChange = {this.handleInputChange}></input>
+                  </div>
+            </div>
+            <br></br>
+            {/* -------------Email ID----------------- */}
+            <div className = "row">
+                  <div className = "col span-1-of-3">
+                      <label>Email ID</label>
+                  </div>
+                  <div className = "col span-2-of-3">
+                      <input type= "email" name= "emailId" placeholder= "Valid Email Id" required onChange = {this.handleInputChange}></input>
+                  </div>
+            </div>
+            <br></br>
+            {/* -------------Mobile----------------- */}
+            <div className = "row">
+                  <div className = "col span-1-of-3">
+                      <label>Mobile</label>
+                  </div>
+                  <div className = "col span-2-of-3">
+                      <input type= "text" name= "mobile" placeholder= "Mobile Number" onChange = {this.handleInputChange}></input>
+                  </div>
+            </div>
+            <br></br>
+            {/* -------------DOJ----------------- */}
+            <div className = "row">
+                  <div className = "col span-1-of-3">
+                      <label>Date Of Joining</label>
+                  </div>
+                  <div className = "col span-2-of-3">
+                      <input type= "date" name= "doj" onChange = {this.handleInputChange}></input>
+                  </div>
+            </div>
+            <br></br>
+            {/* -------------Address----------------- */}
+            <div className = "row">
+                  <div className = "col span-1-of-3">
+                      <label>Address</label>
+                  </div>
+                  <div className = "col span-2-of-3">
+                      <textarea type= "text" name= "address" placeholder= "Residential Address" onChange = {this.handleInputChange}></textarea>
+                  </div>
+            </div>
+            <br></br>
+            {/* -------------Designation----------------- */}
+            <div className="row">
+                <div className="col span-1-of-3">
+                    <label>Designation</label>
+                </div>
+                <div className="col span-2-of-3">
+                    <select name="designation">
+                        <option value="back-end">Back-End Developer</option>
+                        <option value="devop">DevOps</option>
+                        <option value="front-end" selected>Front-End Developer</option>
+                        <option value="ios">IOS Developer</option>
+                        <option value="android">Android Developer</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <br></br>
+            {/* -------------Marital Status----------------- */}
+            <div className="row">
+                <div className="col span-1-of-3">
+                    <label>Status</label>
+                </div>
+                <div className="col span-2-of-3">
+                    <label>Married: </label>
+                    <input type="checkbox" name="status" value="married"/>
+                    <label>Single: </label>
+                    <input type="checkbox" name="status" value="Single"/>
+                </div>
+            </div>
+          {/* -------------Buttons----------------- */}
+            <div className="row">
+              <div className="col span-1-of-3">
+                  <label>&nbsp;</label>
+                  </div>
+                  <div className="col span-2-of-3">
+                  <input type="submit" value="Submit"/>
+              </div>            
+          </div>
 
-
-            <Element label = "First name" ph = "First Name" type = "text" meth = {this.handleInputChange}></Element>
-          
-          
-          
-          
-            <Element label = "Surname" ph = "Last Name" type = "text"></Element>
-            <Element label = "Email" ph = " Valid Email ID" type = "email"></Element>
-            <Element label = "Date of joining" ph = "Joining Date" type = "date"></Element>
-            <Element label = "Mobile Number" ph = "Primary Mobile Number" type = "text"></Element>
-            <Element label = "Address" ph = "Residential Addres" type = "text" input = "textarea"></Element>
-            {/* <Checkbox label = "Status"></Checkbox> */}
-            <DropDown label = "Department" value = {["back-end"]}></DropDown>
-            {/* <Element label = "Department" ph = "Assigned Department" type = "text"></Element> */}
-            <Element label = "CTC" ph = "Offered CTC in lacs per annum" type = "number"></Element>
-
-            {/* <DropDown label = "Designation"></DropDown> */}
-            <Button name = "Submit" type = "submit"></Button>
-            <Button name = "Reset" type = "reset"></Button>
-          </form>
+          <div className="row">
+            <div className="col span-1-of-3">
+                <label>&nbsp;</label>
+            </div>
+            <div className="col span-2-of-3">
+              <input type="reset" value="Reset"/>
+            </div>            
+          </div>
+        </form>
         </section>
       </div>
     );

@@ -4,8 +4,7 @@ import './vendors/css/normalize.css'
 import './css/style.css';
 import './css/queries.css';
 import './vendors/css/grid.css'
-import ProcessRecords from './dataFiles/dataFileOperations - (Node)'
-
+import {ProcessRecords} from './dataFiles/dataFileOperations - (Node)'
 class App extends Component {
     constructor (props){
         super (props);
@@ -14,7 +13,7 @@ class App extends Component {
             empId: '',
             firstName: '',
             lastName: '',
-            emailId: '',
+            emailId: 'rahul.g@gmail.com',
             mobile: '',
             doj: '',
             address: '',
@@ -25,9 +24,6 @@ class App extends Component {
         }
 
     }
-    // JSON Methods ----- START
-    
-    // JSON Methods ----- END
 
     // Input Handling methods ------- START
     handleSubmit = (event) => {
@@ -35,7 +31,7 @@ class App extends Component {
 
         document.write('<p>' + JSON.stringify(this.state) +'</p>');
         console.log("(Inside constructor) {state = }",this.state);
-        ProcessRecords(this.state);
+        ProcessRecords(JSON.stringify(this.state));
     }
     handleInputChange = (event) => {
       event.preventDefault()
@@ -61,7 +57,7 @@ class App extends Component {
                       <label>Employee ID</label>
                   </div>
                   <div className = "col span-2-of-3">
-                      <input type= "text" name= "empId" placeholder= "Unique Employee id" onChange = {this.handleInputChange} ></input>
+                      <input type= "text" name= "empId" placeholder= "Unique Employee id" onChange = {this.handleInputChange}></input>
                   </div>
             </div>
             <br></br>
@@ -71,7 +67,7 @@ class App extends Component {
                       <label>First Name</label>
                   </div>
                   <div className = "col span-2-of-3">
-                      <input type= "text" name= "firstName" placeholder= "First Name" onChange = {this.handleInputChange} ></input>
+                      <input type= "text" name= "firstName" placeholder= "First Name" onChange = {this.handleInputChange}></input>
                   </div>
             </div>
             <br></br>
@@ -81,7 +77,7 @@ class App extends Component {
                       <label>Last Name</label>
                   </div>
                   <div className = "col span-2-of-3">
-                      <input type= "text" name= "lastName" placeholder= "Last Name" onChange = {this.handleInputChange} ></input>
+                      <input type= "text" name= "lastName" placeholder= "Last Name" onChange = {this.handleInputChange}></input>
                   </div>
             </div>
             <br></br>
@@ -91,7 +87,7 @@ class App extends Component {
                       <label>Email ID</label>
                   </div>
                   <div className = "col span-2-of-3">
-                      <input type= "email" name= "emailId" placeholder= "Valid Email Id" required onChange = {this.handleInputChange} ></input>
+                      <input type= "email" name= "emailId" placeholder= "Valid Email Id" required defaultValue = "rahul.g@gmail.com" onChange = {this.handleInputChange}></input>
                   </div>
             </div>
             <br></br>
@@ -101,7 +97,7 @@ class App extends Component {
                       <label>Mobile</label>
                   </div>
                   <div className = "col span-2-of-3">
-                      <input type= "text" name= "mobile" placeholder= "Mobile Number" onChange = {this.handleInputChange} ></input>
+                      <input type= "text" name= "mobile" placeholder= "Mobile Number" onChange = {this.handleInputChange}></input>
                   </div>
             </div>
             <br></br>
@@ -121,7 +117,7 @@ class App extends Component {
                       <label>Address</label>
                   </div>
                   <div className = "col span-2-of-3">
-                      <textarea type= "text" name= "address" placeholder= "Residential Address" onChange = {this.handleInputChange} ></textarea>
+                      <textarea type= "text" name= "address" placeholder= "Residential Address" onChange = {this.handleInputChange}></textarea>
                   </div>
             </div>
             <br></br>

@@ -4,7 +4,7 @@ import './vendors/css/normalize.css'
 import './css/style.css';
 import './css/queries.css';
 import './vendors/css/grid.css'
-import Data from './dataFiles/userData'
+import ProcessRecords from './dataFiles/dataFileOperations - (Node)'
 
 class App extends Component {
     constructor (props){
@@ -23,24 +23,19 @@ class App extends Component {
             ctc: '',
             status: ''
         }
-        this.json = {}
-        this.appendData = (jsonFileData) => {
-            let finalData = [jsonFileData]
-        }
+
     }
     // JSON Methods ----- START
-    loadJSON = () => {
-        const jsonFileData = window.localStorage.getItem()
-        this.appendData(jsonFileData)
-    }
-
+    
     // JSON Methods ----- END
 
     // Input Handling methods ------- START
     handleSubmit = (event) => {
-      event.preventDefault();
-      console.log(Data)
+        event.preventDefault();
+
         document.write('<p>' + JSON.stringify(this.state) +'</p>');
+        console.log("(Inside constructor) {state = }",this.state);
+        ProcessRecords(this.state);
     }
     handleInputChange = (event) => {
       event.preventDefault()
@@ -66,7 +61,7 @@ class App extends Component {
                       <label>Employee ID</label>
                   </div>
                   <div className = "col span-2-of-3">
-                      <input type= "text" name= "empId" placeholder= "Unique Employee id" onChange = {this.handleInputChange} defaultValue = {null}></input>
+                      <input type= "text" name= "empId" placeholder= "Unique Employee id" onChange = {this.handleInputChange} ></input>
                   </div>
             </div>
             <br></br>
@@ -76,7 +71,7 @@ class App extends Component {
                       <label>First Name</label>
                   </div>
                   <div className = "col span-2-of-3">
-                      <input type= "text" name= "firstName" placeholder= "First Name" onChange = {this.handleInputChange} defaultValue = {null}></input>
+                      <input type= "text" name= "firstName" placeholder= "First Name" onChange = {this.handleInputChange} ></input>
                   </div>
             </div>
             <br></br>
@@ -86,7 +81,7 @@ class App extends Component {
                       <label>Last Name</label>
                   </div>
                   <div className = "col span-2-of-3">
-                      <input type= "text" name= "lastName" placeholder= "Last Name" onChange = {this.handleInputChange} defaultValue = {null}></input>
+                      <input type= "text" name= "lastName" placeholder= "Last Name" onChange = {this.handleInputChange} ></input>
                   </div>
             </div>
             <br></br>
@@ -96,7 +91,7 @@ class App extends Component {
                       <label>Email ID</label>
                   </div>
                   <div className = "col span-2-of-3">
-                      <input type= "email" name= "emailId" placeholder= "Valid Email Id" required onChange = {this.handleInputChange}></input>
+                      <input type= "email" name= "emailId" placeholder= "Valid Email Id" required onChange = {this.handleInputChange} ></input>
                   </div>
             </div>
             <br></br>
@@ -106,7 +101,7 @@ class App extends Component {
                       <label>Mobile</label>
                   </div>
                   <div className = "col span-2-of-3">
-                      <input type= "text" name= "mobile" placeholder= "Mobile Number" onChange = {this.handleInputChange}  defaultValue = {null}></input>
+                      <input type= "text" name= "mobile" placeholder= "Mobile Number" onChange = {this.handleInputChange} ></input>
                   </div>
             </div>
             <br></br>
@@ -116,7 +111,7 @@ class App extends Component {
                       <label>Date Of Joining</label>
                   </div>
                   <div className = "col span-2-of-3">
-                      <input type= "date" name= "doj" onChange = {this.handleInputChange}  defaultValue = {null}></input>
+                      <input type= "date" name= "doj" onChange = {this.handleInputChange}></input>
                   </div>
             </div>
             <br></br>
@@ -126,7 +121,7 @@ class App extends Component {
                       <label>Address</label>
                   </div>
                   <div className = "col span-2-of-3">
-                      <textarea type= "text" name= "address" placeholder= "Residential Address" onChange = {this.handleInputChange}  defaultValue = {null}></textarea>
+                      <textarea type= "text" name= "address" placeholder= "Residential Address" onChange = {this.handleInputChange} ></textarea>
                   </div>
             </div>
             <br></br>
@@ -168,7 +163,7 @@ class App extends Component {
                       <label>CTC</label>
                   </div>
                   <div className = "col span-2-of-3">
-                      <input type= "number" name= "ctc" placeholder= "Offered CTC (in Lacs per annum)" onChange = {this.handleInputChange} defaultValue = {null}></input>
+                      <input type= "number" name= "ctc" placeholder= "Offered CTC (in Lacs per annum)" onChange = {this.handleInputChange}></input>
                   </div>
             </div>
             <br></br>

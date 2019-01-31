@@ -1,4 +1,4 @@
-var Data = {
+[{
     "empId": "e1234",
     "firstName": "LAKSHAY",
     "lastName": "DUTT",
@@ -10,6 +10,9 @@ var Data = {
     "department": "",
     "ctc": "",
     "status": ""
-}
-
-export default Data
+}, {
+    "empId": "e5000",
+    "firstName": "Manish",
+    "lastName": "jain",
+    "emailId": "manishC@gmail.com"
+}]

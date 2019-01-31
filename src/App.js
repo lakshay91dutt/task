@@ -75,14 +75,13 @@ class App extends Component {
                 elementType = "input" type = "text"
                 id = "lastName" placeholder = "Last Name" handler = {this.handleInputChange}>
             </AllELements>
-            {/* -------------Email ID----------------- */}
+            {/* -------------Reusable ---- Email ID----------------- */}
             <AllELements 
                 labelName = "Email Id"
                 elementType = "input" type = "email"
                 id = "emailId" placeholder = "Valid Email Id" handler = {this.handleInputChange}>
             </AllELements>
-            {/* -------------Mobile----------------- */}
-
+            {/* -------------Reusable ---- Mobile----------------- */}
             <AllELements 
                 labelName = "Mobile Number"
                 elementType = "input" type = "text"

@@ -27,10 +27,10 @@ const AllElements = (props) => {
         <div>
             <div className = "row">
                 <div className = "col span-1-of-3">
-                    <label>Address</label>
+                    <label>{props.labelName}</label>
                 </div>
                 <div className = "col span-2-of-3">
-                    <textarea type= "text" name= "address" placeholder= "Residential Address" onChange = {props.handleInputChange}></textarea>
+                    <textarea type= {props.type} name= {props.id} placeholder= {props.placeholder} onChange = {props.handleInputChange}></textarea>
                 </div>
             </div>
             <br></br>

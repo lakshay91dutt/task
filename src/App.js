@@ -4,7 +4,12 @@ import './vendors/css/normalize.css'
 import './css/style.css';
 import './css/queries.css';
 import './vendors/css/grid.css'
-import {ProcessRecords} from './dataFiles/dataFileOperations - (Node)'
+
+//React module - To use predefined form elements
+import AllELements from './customComponents/formElements'
+
+//Node module - to write Form data into local JSON file
+//import {ProcessRecords} from './dataFiles/dataFileOperations - (Node)'
 class App extends Component {
     constructor (props){
         super (props);
@@ -13,7 +18,7 @@ class App extends Component {
             empId: '',
             firstName: '',
             lastName: '',
-            emailId: 'rahul.g@gmail.com',
+            emailId: '',
             mobile: '',
             doj: '',
             address: '',
@@ -28,10 +33,10 @@ class App extends Component {
     // Input Handling methods ------- START
     handleSubmit = (event) => {
         event.preventDefault();
+        let d = this.state;
+        document.write('<p>' + JSON.stringify(d) +'</p>');
 
-        document.write('<p>' + JSON.stringify(this.state) +'</p>');
-        console.log("(Inside constructor) {state = }",this.state);
-        ProcessRecords(JSON.stringify(this.state));
+        //ProcessRecords(JSON.stringify(this.state));
     }
     handleInputChange = (event) => {
       event.preventDefault()
@@ -51,76 +56,50 @@ class App extends Component {
 
         <section className = "section-form">
           <form className = "contact-form" onSubmit = {this.handleSubmit} >
-          {/* -------------Employee ID----------------- */}
-          <div className = "row">
-                  <div className = "col span-1-of-3">
-                      <label for = "empId">Employee ID</label>
-                  </div>
-                  <div className = "col span-2-of-3">
-                      <input type= "text" name= "empId" id= "empId" placeholder= "Unique Employee id" onChange = {this.handleInputChange}></input>
-                  </div>
-            </div>
-            <br></br>
-          {/* -------------Name----------------- */}
-            <div className = "row">
-                  <div className = "col span-1-of-3">
-                      <label>First Name</label>
-                  </div>
-                  <div className = "col span-2-of-3">
-                      <input type= "text" name= "firstName" placeholder= "First Name" onChange = {this.handleInputChange}></input>
-                  </div>
-            </div>
-            <br></br>
-            {/* -------------lastName----------------- */}
-            <div className = "row">
-                  <div className = "col span-1-of-3">
-                      <label>Last Name</label>
-                  </div>
-                  <div className = "col span-2-of-3">
-                      <input type= "text" name= "lastName" placeholder= "Last Name" onChange = {this.handleInputChange}></input>
-                  </div>
-            </div>
-            <br></br>
+          {/* -------------Reusable ---- Employee ID----------------- */}
+            <AllELements 
+                labelName = "Employee ID"
+                elementType = "input" type = "text"
+                id = "empId" placeholder = "Unique Employee id" handler = {this.handleInputChange}>
+            </AllELements>
+          {/* -------------Reusable ---- Name----------------- */}
+            <AllELements 
+                labelName = "First Name"
+                elementType = "input" type = "text"
+                id = "firstName" placeholder = "First Name" handler = {this.handleInputChange}>
+            </AllELements>
+
+            {/* -------------Reusable ---- lastName----------------- */}
+            <AllELements 
+                labelName = "Last Name"
+                elementType = "input" type = "text"
+                id = "lastName" placeholder = "Last Name" handler = {this.handleInputChange}>
+            </AllELements>
             {/* -------------Email ID----------------- */}
-            <div className = "row">
-                  <div className = "col span-1-of-3">
-                      <label>Email ID</label>
-                  </div>
-                  <div className = "col span-2-of-3">
-                      <input type= "email" name= "emailId" placeholder= "Valid Email Id" required defaultValue = "rahul.g@gmail.com" onChange = {this.handleInputChange}></input>
-                  </div>
-            </div>
-            <br></br>
+            <AllELements 
+                labelName = "Email Id"
+                elementType = "input" type = "email"
+                id = "emailId" placeholder = "Valid Email Id" handler = {this.handleInputChange}>
+            </AllELements>
             {/* -------------Mobile----------------- */}
-            <div className = "row">
-                  <div className = "col span-1-of-3">
-                      <label>Mobile</label>
-                  </div>
-                  <div className = "col span-2-of-3">
-                      <input type= "text" name= "mobile" placeholder= "Mobile Number" onChange = {this.handleInputChange}></input>
-                  </div>
-            </div>
-            <br></br>
+
+            <AllELements 
+                labelName = "Mobile Number"
+                elementType = "input" type = "text"
+                id = "number" placeholder = "Primary Contact Number" handler = {this.handleInputChange}>
+            </AllELements>
             {/* -------------DOJ----------------- */}
-            <div className = "row">
-                  <div className = "col span-1-of-3">
-                      <label>Date Of Joining</label>
-                  </div>
-                  <div className = "col span-2-of-3">
-                      <input type= "date" name= "doj" onChange = {this.handleInputChange}></input>
-                  </div>
-            </div>
-            <br></br>
+            <AllELements 
+                labelName = "Date Of Joining"
+                elementType = "input" type = "date"
+                id = "doj" placeholder = {null} handler = {this.handleInputChange}>
+            </AllELements>
             {/* -------------Address----------------- */}
-            <div className = "row">
-                  <div className = "col span-1-of-3">
-                      <label>Address</label>
-                  </div>
-                  <div className = "col span-2-of-3">
-                      <textarea type= "text" name= "address" placeholder= "Residential Address" onChange = {this.handleInputChange}></textarea>
-                  </div>
-            </div>
-            <br></br>
+            <AllELements 
+                labelName = "Address"
+                elementType = "textarea" type = "text"
+                id = "address" placeholder = "Permanent Address" handler = {this.handleInputChange}>
+            </AllELements>
             {/* -------------Designation----------------- */}
             <div className="row">
                 <div className="col span-1-of-3">
@@ -154,15 +133,11 @@ class App extends Component {
             </div>
             <br></br>            
             {/* -------------CTC----------------- */}
-            <div className = "row">
-                  <div className = "col span-1-of-3">
-                      <label>CTC</label>
-                  </div>
-                  <div className = "col span-2-of-3">
-                      <input type= "number" name= "ctc" placeholder= "Offered CTC (in Lacs per annum)" onChange = {this.handleInputChange}></input>
-                  </div>
-            </div>
-            <br></br>
+            <AllELements 
+                labelName = "CTC"
+                elementType = "input" type = "number"
+                id = "ctc" placeholder = "Current CTC" handler = {this.handleInputChange}>
+            </AllELements>
             {/* -------------Marital Status----------------- */}
             <div className="row">
                 <div className="col span-1-of-3">
@@ -176,23 +151,15 @@ class App extends Component {
                 </div>
             </div>
           {/* -------------Buttons----------------- */}
-            <div className="row">
-              <div className="col span-1-of-3">
-                  <label>&nbsp;</label>
-                  </div>
-                  <div className="col span-2-of-3">
-                  <input type="submit" value="Submit"/>
-              </div>            
-          </div>
+            <AllELements 
+                elementType = "button" type = "submit" value = "Submit"
+                handler = {this.handleSubmit}>
+            </AllELements>
 
-          <div className="row">
-            <div className="col span-1-of-3">
-                <label>&nbsp;</label>
-            </div>
-            <div className="col span-2-of-3">
-              <input type="reset" value="Reset"/>
-            </div>            
-          </div>
+            <AllELements 
+                elementType = "button" type = "reset" value = "Reset"
+                handler = {this.handleSubmit}>
+            </AllELements>
         </form>
         </section>
       </div>

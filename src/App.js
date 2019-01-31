@@ -54,10 +54,10 @@ class App extends Component {
           {/* -------------Employee ID----------------- */}
           <div className = "row">
                   <div className = "col span-1-of-3">
-                      <label>Employee ID</label>
+                      <label for = "empId">Employee ID</label>
                   </div>
                   <div className = "col span-2-of-3">
-                      <input type= "text" name= "empId" placeholder= "Unique Employee id" onChange = {this.handleInputChange}></input>
+                      <input type= "text" name= "empId" id= "empId" placeholder= "Unique Employee id" onChange = {this.handleInputChange}></input>
                   </div>
             </div>
             <br></br>

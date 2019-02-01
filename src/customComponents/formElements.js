@@ -4,7 +4,7 @@ const AllElements = (props) => {
 
     let resp = [];
 
-    //input - text, email, number, date
+    //input - text, email, number, date, file
     if (props.elementType === "input"){
         resp.push(
         <div>
@@ -13,7 +13,13 @@ const AllElements = (props) => {
                     <label htmlFor = {props.id}>{props.labelName}</label>
                 </div>
                 <div className = "col span-2-of-3">
-                    <input type= {props.type} name= {props.id} id= {props.id} placeholder= {props.placeholder} onChange = {props.handleInputChange}></input>
+                    <input
+                    accept = {props.accept} 
+                    type= {props.type} name= {props.id} 
+                    id= {props.id} placeholder= {props.placeholder} 
+                    onClick = {props.handlerOnClick}
+                    onChange = {props.handlerInputChange}
+                    ></input>
                 </div>
             </div>
             <br></br>

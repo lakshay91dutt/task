@@ -28,7 +28,8 @@ class App extends Component {
             designation: '',
             department: '',
             ctc: '',
-            status: ''
+            status: '',
+            fileUrl: ''
         }
 
     }
@@ -63,49 +64,56 @@ class App extends Component {
             <AllELements 
                 labelName = "Applicant ID"
                 elementType = "input" type = "text"
-                id = "applicantId" placeholder = "Unique Registration id" handler = {this.handleInputChange}>
+                id = "applicantId" placeholder = "Unique Registration id" handlerInputChange = {this.handleInputChange}>
             </AllELements>
           {/* -------------Reusable ---- Name----------------- */}
             <AllELements 
                 labelName = "First Name"
                 elementType = "input" type = "text"
-                id = "firstName" placeholder = "First Name" handler = {this.handleInputChange}>
+                id = "firstName" placeholder = "First Name" handlerInputChange = {this.handleInputChange}>
             </AllELements>
 
             {/* -------------Reusable ---- lastName----------------- */}
             <AllELements 
                 labelName = "Last Name"
                 elementType = "input" type = "text"
-                id = "lastName" placeholder = "Last Name" handler = {this.handleInputChange}>
+                id = "lastName" placeholder = "Last Name" handlerInputChange = {this.handleInputChange}>
             </AllELements>
             {/* -------------Reusable ---- Email ID----------------- */}
             <AllELements 
                 labelName = "Email Id"
                 elementType = "input" type = "email"
-                id = "emailId" placeholder = "Valid Email Id" handler = {this.handleInputChange}>
+                id = "emailId" placeholder = "Valid Email Id" handlerInputChange = {this.handleInputChange}>
             </AllELements>
             {/* -------------Reusable ---- Mobile----------------- */}
             <AllELements 
                 labelName = "Mobile Number"
                 elementType = "input" type = "text"
-                id = "number" placeholder = "Primary Contact Number" handler = {this.handleInputChange}>
+                id = "number" placeholder = "Primary Contact Number" handlerInputChange = {this.handleInputChange}>
             </AllELements>
-            {/* -------------Date Of Birth----------------- */}
+            {/* -------------Reusable ----Date Of Birth----------------- */}
             <AllELements 
                 labelName = "Date Of Birth"
                 elementType = "input" type = "date"
-                id = "dob" placeholder = {null} handler = {this.handleInputChange}>
+                id = "dob" placeholder = {null} handlerInputChange = {this.handleInputChange}>
             </AllELements>
-            {/* -------------Address----------------- */}
+            {/* -------------Reusable ---- Address----------------- */}
             <AllELements 
                 labelName = "Address"
                 elementType = "textarea" type = "text"
-                id = "address" placeholder = "Permanent Address" handler = {this.handleInputChange}>
+                id = "address" placeholder = "Permanent Address" handlerInputChange = {this.handleInputChange}>
             </AllELements>
-            {/* -------------Department----------------- */}
+            {/* -------------Reusable ---- File----------------- */}
+            <AllELements 
+                labelName = "Resume Upload"
+                elementType = "input" type = "file"
+                id = "fileUrl" accept = ".pdf" handlerInputChange = {this.handleInputChange}>
+            </AllELements>
+
+            {/* -------------Reusable ---- Department----------------- */}
             <AllELements 
                 labelName = "Department"
-                elementType = "dropDown" id = "department" handler = {this.handleInputChange}
+                elementType = "dropDown" id = "department" handleInputChange = {this.handleInputChange}
                 select = {
                         [{
                             opt1Value: "back-end",
@@ -125,10 +133,10 @@ class App extends Component {
                         }]
                 }>
             </AllELements>
-            {/* -------------Designation----------------- */}
+            {/* -------------Reusable ---- Designation----------------- */}
             <AllELements 
                 labelName = "Designation"
-                elementType = "dropDown" id = "designation" handler = {this.handleInputChange}
+                elementType = "dropDown" id = "designation" handleInputChange = {this.handleInputChange}
                 select = {
                         [{
                             opt1Value: "back-end",
@@ -148,11 +156,11 @@ class App extends Component {
                         }]
                 }>
             </AllELements>
-            {/* -------------CTC----------------- */}
+            {/* -------------Reusable ---- CTC----------------- */}
             <AllELements 
                 labelName = "CTC"
                 elementType = "input" type = "number"
-                id = "ctc" placeholder = "Current CTC" handler = {this.handleInputChange}>
+                id = "ctc" placeholder = "Current CTC" handleInputChange = {this.handleInputChange}>
             </AllELements>
             {/* -------------Marital Status----------------- */}
             <div className="row">
@@ -166,15 +174,15 @@ class App extends Component {
                     <input type="checkbox" name="status" value="Single"  onChange = {this.handleInputChange} checked/>
                 </div>
             </div>
-          {/* -------------Buttons----------------- */}
+          {/* -------------Reusable ---- Buttons----------------- */}
             <AllELements 
                 elementType = "button" type = "submit" value = "Submit"
-                handler = {this.handleSubmit}>
+                handlerSubmit = {this.handleSubmit}>
             </AllELements>
 
             <AllELements 
                 elementType = "button" type = "reset" value = "Reset"
-                handler = {this.handleSubmit}>
+                handlerSubmit = {this.handleSubmit}>
             </AllELements>
         </form>
         </section>

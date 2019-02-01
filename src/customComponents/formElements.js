@@ -14,16 +14,16 @@ const AllElements = (props) => {
                 </div>
                 <div className = "col span-2-of-3">
                     <input
+                    type= {props.type} name= {props.id} id= {props.id}
                     accept = {props.accept} 
-                    type= {props.type} name= {props.id} 
-                    id= {props.id} placeholder= {props.placeholder} 
+                    placeholder= {props.placeholder} 
                     onClick = {props.handlerOnClick}
                     onChange = {props.handlerInputChange}
                     ></input>
                 </div>
             </div>
             <br></br>
-      </div>
+        </div>
         );
     }
 

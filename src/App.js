@@ -18,7 +18,6 @@ class App extends Component {
     constructor (props){
         super (props);
         this.state = {
-            empId: '',
             firstName: '',
             lastName: '',
             emailId: '',
@@ -37,20 +36,24 @@ class App extends Component {
     // Input Handling methods ------- START
     handleSubmit = (event) => {
         event.preventDefault();
-        let d = this.state;
-        document.write('<p>' + JSON.stringify(d) +'</p>');
+
+        document.write('<p>' + JSON.stringify(this.state) +'</p>');
 
     // ProcessRecords(JSON.stringify(this.state.empId));
     }
+
     handleInputChange = (event) => {
       event.preventDefault()
-      console.log(event.target.name, event.target.value);
-      this.setState({
-        [event.target.name]: event.target.value
-      })
-  // Input Handling methods ------- END
 
-  };
+      let tempValue;
+      if (event.target.name === "fileUrl") {tempValue = event.target.files[0];}
+      else{tempValue = event.target.value;}
+      this.setState({
+        [event.target.name]: tempValue
+      })
+    };
+    // Input Handling methods ------- END
+
   render(){
     return (
       <div className = "App">
@@ -62,58 +65,58 @@ class App extends Component {
           <form className = "contact-form" onSubmit = {this.handleSubmit} >
           {/* -------------Reusable ---- Employee ID----------------- */}
             <AllELements 
-                labelName = "Applicant ID"
+                labelName = "Applicant ID" id = "applicantId"
                 elementType = "input" type = "text"
-                id = "applicantId" placeholder = "Unique Registration id" handlerInputChange = {this.handleInputChange}>
+                placeholder = "Unique Registration id" handlerInputChange = {this.handleInputChange}>
             </AllELements>
           {/* -------------Reusable ---- Name----------------- */}
             <AllELements 
-                labelName = "First Name"
+                labelName = "First Name" id = "firstName" 
                 elementType = "input" type = "text"
-                id = "firstName" placeholder = "First Name" handlerInputChange = {this.handleInputChange}>
+                placeholder = "First Name" handlerInputChange = {this.handleInputChange}>
             </AllELements>
 
             {/* -------------Reusable ---- lastName----------------- */}
             <AllELements 
                 labelName = "Last Name"
-                elementType = "input" type = "text"
-                id = "lastName" placeholder = "Last Name" handlerInputChange = {this.handleInputChange}>
+                elementType = "input" type = "text" id = "lastName" 
+                placeholder = "Last Name" handlerInputChange = {this.handleInputChange}>
             </AllELements>
             {/* -------------Reusable ---- Email ID----------------- */}
             <AllELements 
                 labelName = "Email Id"
-                elementType = "input" type = "email"
-                id = "emailId" placeholder = "Valid Email Id" handlerInputChange = {this.handleInputChange}>
+                elementType = "input" type = "email" id = "emailId"
+                placeholder = "Valid Email Id" handlerInputChange = {this.handleInputChange}>
             </AllELements>
             {/* -------------Reusable ---- Mobile----------------- */}
             <AllELements 
-                labelName = "Mobile Number"
+                labelName = "Mobile Number" id = "mobile"
                 elementType = "input" type = "text"
-                id = "number" placeholder = "Primary Contact Number" handlerInputChange = {this.handleInputChange}>
+                placeholder = "Primary Contact Number" handlerInputChange = {this.handleInputChange}>
             </AllELements>
             {/* -------------Reusable ----Date Of Birth----------------- */}
             <AllELements 
                 labelName = "Date Of Birth"
                 elementType = "input" type = "date"
-                id = "dob" placeholder = {null} handlerInputChange = {this.handleInputChange}>
+                id = "dob" handlerInputChange = {this.handleInputChange}>
             </AllELements>
             {/* -------------Reusable ---- Address----------------- */}
             <AllELements 
-                labelName = "Address"
+                labelName = "Address" id = "address" 
                 elementType = "textarea" type = "text"
-                id = "address" placeholder = "Permanent Address" handlerInputChange = {this.handleInputChange}>
+                placeholder = "Permanent Address" handlerInputChange = {this.handleInputChange}>
             </AllELements>
             {/* -------------Reusable ---- File----------------- */}
             <AllELements 
-                labelName = "Resume Upload"
+                labelName = "Resume Upload" id = "fileUrl" 
                 elementType = "input" type = "file"
-                id = "fileUrl" accept = ".pdf" handlerInputChange = {this.handleInputChange}>
+                accept = ".pdf" handlerInputChange = {this.handleInputChange}>
             </AllELements>
 
             {/* -------------Reusable ---- Department----------------- */}
             <AllELements 
-                labelName = "Department"
-                elementType = "dropDown" id = "department" handleInputChange = {this.handleInputChange}
+                labelName = "Department" id = "department" 
+                elementType = "dropDown" handleInputChange = {this.handleInputChange}
                 select = {
                         [{
                             opt1Value: "back-end",
@@ -135,8 +138,8 @@ class App extends Component {
             </AllELements>
             {/* -------------Reusable ---- Designation----------------- */}
             <AllELements 
-                labelName = "Designation"
-                elementType = "dropDown" id = "designation" handleInputChange = {this.handleInputChange}
+                labelName = "Designation" id = "designation" 
+                elementType = "dropDown" handleInputChange = {this.handleInputChange}
                 select = {
                         [{
                             opt1Value: "back-end",
@@ -158,9 +161,9 @@ class App extends Component {
             </AllELements>
             {/* -------------Reusable ---- CTC----------------- */}
             <AllELements 
-                labelName = "CTC"
+                labelName = "CTC" id = "ctc"
                 elementType = "input" type = "number"
-                id = "ctc" placeholder = "Current CTC" handleInputChange = {this.handleInputChange}>
+                placeholder = "Current CTC" handleInputChange = {this.handleInputChange}>
             </AllELements>
             {/* -------------Marital Status----------------- */}
             <div className="row">
@@ -169,9 +172,9 @@ class App extends Component {
                 </div>
                 <div className="col span-2-of-3">
                     <label>Married: </label>
-                    <input type="checkbox" name="status" value="married" onChange = {this.handleInputChange}/>
+                    <input type="checkbox" name="status" value="married" onChange = {this.handleInputChange} defaultChecked/>
                     <label>Single: </label>
-                    <input type="checkbox" name="status" value="Single"  onChange = {this.handleInputChange} checked/>
+                    <input type="checkbox" name="status" value="Single"  onChange = {this.handleInputChange} />
                 </div>
             </div>
           {/* -------------Reusable ---- Buttons----------------- */}

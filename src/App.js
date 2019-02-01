@@ -1,5 +1,9 @@
+/*
+    Candidate
+            Registration 
+*/
+
 import React, { Component } from 'react';
-//import './App.css';
 import './vendors/css/normalize.css'
 import './css/style.css';
 import './css/queries.css';
@@ -20,7 +24,7 @@ class App extends Component {
             lastName: '',
             emailId: '',
             mobile: '',
-            doj: '',
+            dob: '',
             address: '',
             designation: '',
             department: '',
@@ -51,16 +55,16 @@ class App extends Component {
     return (
       <div className = "App">
         <div className = "row">
-          <h1>Employee Registration</h1>
+          <h1>Candidate Registration</h1>
         </div>
 
         <section className = "section-form">
           <form className = "contact-form" onSubmit = {this.handleSubmit} >
           {/* -------------Reusable ---- Employee ID----------------- */}
             <AllELements 
-                labelName = "Employee ID"
+                labelName = "Applicant ID"
                 elementType = "input" type = "text"
-                id = "empId" placeholder = "Unique Employee id" handler = {this.handleInputChange}>
+                id = "applicantId" placeholder = "Unique Registration id" handler = {this.handleInputChange}>
             </AllELements>
           {/* -------------Reusable ---- Name----------------- */}
             <AllELements 
@@ -87,11 +91,11 @@ class App extends Component {
                 elementType = "input" type = "text"
                 id = "number" placeholder = "Primary Contact Number" handler = {this.handleInputChange}>
             </AllELements>
-            {/* -------------DOJ----------------- */}
+            {/* -------------Date Of Birth----------------- */}
             <AllELements 
-                labelName = "Date Of Joining"
+                labelName = "Date Of Birth"
                 elementType = "input" type = "date"
-                id = "doj" placeholder = {null} handler = {this.handleInputChange}>
+                id = "dob" placeholder = {null} handler = {this.handleInputChange}>
             </AllELements>
             {/* -------------Address----------------- */}
             <AllELements 
@@ -99,38 +103,52 @@ class App extends Component {
                 elementType = "textarea" type = "text"
                 id = "address" placeholder = "Permanent Address" handler = {this.handleInputChange}>
             </AllELements>
-            {/* -------------Designation----------------- */}
-            <div className="row">
-                <div className="col span-1-of-3">
-                    <label>Designation</label>
-                </div>
-                <div className="col span-2-of-3">
-                    <select name="designation" onChange = {this.handleInputChange}>
-                        <option value="back-end" onChange = {this.handleInputChange}>Back-End Developer</option>
-                        <option value="devop" onChange = {this.handleInputChange}>DevOps</option>
-                        <option value="front-end"  onChange = {this.handleInputChange} selected>Front-End Developer</option>
-                        <option value="ios" onChange = {this.handleInputChange}>IOS Developer</option>
-                        <option value="android"  onChange = {this.handleInputChange}>Android Developer</option>
-                        <option value="other" onChange = {this.handleInputChange}>Other</option>
-                    </select>
-                </div>
-            </div>
-            <br></br>
             {/* -------------Department----------------- */}
-            <div className="row">
-                <div className="col span-1-of-3">
-                    <label>Department</label>
-                </div>
-                <div className="col span-2-of-3">
-                    <select name="department">
-                        <option value="web development" onChange = {this.handleInputChange}>Web Development</option>
-                        <option value="devop" onChange = {this.handleInputChange}>DevOps</option>
-                        <option value="android development"  onChange = {this.handleInputChange} selected>Android Development</option>
-                        <option value="ios development" onChange = {this.handleInputChange}>IOS</option>
-                    </select>
-                </div>
-            </div>
-            <br></br>            
+            <AllELements 
+                labelName = "Department"
+                elementType = "dropDown" id = "department" handler = {this.handleInputChange}
+                select = {
+                        [{
+                            opt1Value: "back-end",
+                            opt1Name: "Back End"
+                        },{
+                            opt1Value: "front-end",
+                            opt1Name: "Front End"
+                        },{
+                            opt1Value: "ios",
+                            opt1Name: "IOS Developer"
+                        },{
+                            opt1Value: "android",
+                            opt1Name: "Android Developer"
+                        },{
+                            opt1Value: "other",
+                            opt1Name: "Other"                            
+                        }]
+                }>
+            </AllELements>
+            {/* -------------Designation----------------- */}
+            <AllELements 
+                labelName = "Designation"
+                elementType = "dropDown" id = "designation" handler = {this.handleInputChange}
+                select = {
+                        [{
+                            opt1Value: "back-end",
+                            opt1Name: "Back End Developer"
+                        },{
+                            opt1Value: "front-end",
+                            opt1Name: "Front End Developer"
+                        },{
+                            opt1Value: "ios",
+                            opt1Name: "IOS Developer"
+                        },{
+                            opt1Value: "android",
+                            opt1Name: "Android Developer"
+                        },{
+                            opt1Value: "other",
+                            opt1Name: "Other"                            
+                        }]
+                }>
+            </AllELements>
             {/* -------------CTC----------------- */}
             <AllELements 
                 labelName = "CTC"

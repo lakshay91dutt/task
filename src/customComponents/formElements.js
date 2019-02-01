@@ -39,16 +39,16 @@ const AllElements = (props) => {
     }
 
     //select - for drop down menus
-    else if (props.elementType === "select") {
+    else if (props.elementType === "dropDown") {
         resp.push(
         <div>
             <div className="row">
                 <div className="col span-1-of-3">
-                    <label>Department</label>
+                    <label>{props.labelName}</label>
                 </div>
                 <div className="col span-2-of-3">
-                    <select name="department">
-                        <option value="web development" onChange = {props.handleInputChange}>Web Development</option>
+                    <select name={props.id}>
+                        <option value={props.select[0].opt1Value} onChange = {props.handleInputChange}>{props.select[0].opt1Name}</option>
                         <option value="devop" onChange = {props.handleInputChange}>DevOps</option>
                         <option value="android development"  onChange = {props.handleInputChange} selected>Android Development</option>
                         <option value="ios development" onChange = {props.handleInputChange}>IOS</option>

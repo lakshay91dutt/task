@@ -14,10 +14,9 @@ import AllELements from './customComponents/formElements'
 
 //Node module - to write Form data into local JSON file
 //import {ProcessRecords} from './dataFiles/dataFileOperations - (Node)'
-class App extends Component {
+class App extends Component { 
     constructor (props){
         super (props);
-
         this.state = {
             empId: '',
             firstName: '',
@@ -40,7 +39,7 @@ class App extends Component {
         let d = this.state;
         document.write('<p>' + JSON.stringify(d) +'</p>');
 
-        //ProcessRecords(JSON.stringify(this.state));
+    // ProcessRecords(JSON.stringify(this.state.empId));
     }
     handleInputChange = (event) => {
       event.preventDefault()
